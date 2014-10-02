@@ -24,28 +24,28 @@ func TestCalcSunrise(t *testing.T) {
 	now := time.Date(2014, time.June, 12, 2, 57, 12, 0, location)
 	sunrise := CalcSunrise(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunrise, expectedSunrise) {
-		t.Error("Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
+		t.Error("[1] Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
 	}
 
 	// Test 1 minute after sunrise.
 	now = expectedSunrise.Add(time.Minute)
 	sunrise = CalcSunrise(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunrise, expectedSunrise) {
-		t.Error("Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
+		t.Error("[2] Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
 	}
 
 	// Test well after sunrise.
 	now = time.Date(2014, time.June, 12, 10, 57, 12, 0, location)
 	sunrise = CalcSunrise(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunrise, expectedSunrise) {
-		t.Error("Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
+		t.Error("[3] Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
 	}
 
 	// Test late in day.
 	now = time.Date(2014, time.June, 12, 22, 57, 12, 0, location)
 	sunrise = CalcSunrise(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunrise, expectedSunrise) {
-		t.Error("Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
+		t.Error("[4] Unexpected sunrise result:", sunrise, ", expected: ", expectedSunrise)
 	}
 }
 
@@ -98,28 +98,28 @@ func TestCalcSunset(t *testing.T) {
 	now := time.Date(2014, time.June, 12, 2, 57, 12, 0, location)
 	sunset := CalcSunset(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunset, expectedSunset) {
-		t.Error("Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
+		t.Error("[1] Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
 	}
 
 	// Test 1 minute after sunset.
 	now = expectedSunset.Add(time.Minute)
 	sunset = CalcSunset(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunset, expectedSunset) {
-		t.Error("Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
+		t.Error("[2] Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
 	}
 
 	// Test well after sunset.
 	now = time.Date(2014, time.June, 12, 10, 57, 12, 0, location)
 	sunset = CalcSunset(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunset, expectedSunset) {
-		t.Error("Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
+		t.Error("[3] Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
 	}
 
 	// Test late in day.
 	now = time.Date(2014, time.June, 12, 22, 57, 12, 0, location)
 	sunset = CalcSunset(now, TEST_LAT, TEST_LONG)
 	if !compareApproxTimes(sunset, expectedSunset) {
-		t.Error("Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
+		t.Error("[4] Unexpected sunset result:", sunset, ", expected: ", expectedSunset)
 	}
 }
 

@@ -386,6 +386,25 @@ func CalcSunset(t time.Time, latitude float64, longitude float64) time.Time {
 	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, loc).Add(sunsetUTC).In(t.Location())
 }
 
+// NextSunrise returns date/time of the next sunrise before tBefore
+func PreviousSunrise(tBefore time.Time, latitude float64, longitude float64) (tSunrise time.Time) {
+	tSunrise = CalcSunrise(tBefore, latitude, longitude)
+	if tBefore.Before(tSunrise) {
+		tSunrise = CalcSunrise(tBefore.Add(-OneDay), latitude, longitude)
+	}
+	return
+}
+
+// NextSunset returns date/time of the next sunset before tBefore
+func PreviousSunset(tBefore time.Time, latitude float64, longitude float64) (tSunset time.Time) {
+	tSunset = CalcSunset(tBefore, latitude, longitude)
+	if tBefore.Before(tSunset) {
+		tSunset = CalcSunset(tBefore.Add(-OneDay), latitude, longitude)
+	}
+	return
+}
+
+
 // NextSunrise returns date/time of the next sunrise after tAfter
 func NextSunrise(tAfter time.Time, latitude float64, longitude float64) (tSunrise time.Time) {
 	tSunrise = CalcSunrise(tAfter, latitude, longitude)
